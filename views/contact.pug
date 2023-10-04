@@ -1,0 +1,29 @@
+doctype html
+html(lang="ko")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title node+express website
+  body 
+    h1 연락처 페이지 입니다 
+    
+    include includes/comm_header.pug
+    main 
+      form(action="/contactProc", method="post")
+        h2 문의하기
+        ul 
+        li 이름
+          input(type="text", name="name", required)
+        li 연락처
+          input(type="text", name="phone", required)
+        li 이메일
+          input(type="text", name="email", required)
+        li 내용
+          br
+          textarea(name="memo", cols="50", rows="10")
+        li 
+          button 문의하기
+    include includes/comm_footer.pug
+    
+    
