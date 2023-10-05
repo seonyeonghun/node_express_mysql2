@@ -1,0 +1,30 @@
+@charset "utf-8";
+body {
+  font: 16px/1.5 normal "Nanum Gothic", sans-serif;
+}
+.d-none {
+  display: none;
+}
+.contact_list {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+.contact_list,
+.contact_list th,
+.contact_list td {
+  border: 1px solid #333;
+}
+
+.contact_list th,
+.contact_list td {
+  padding: 0.5rem 1rem;
+}
+
+.contact_list td {
+  text-align: center;
+  valign: middle;
+}
+
+footer hr {
+  margin: 1rem 0;
+}
