@@ -13,10 +13,11 @@ const conn = mysql.createConnection({
 console.log("connected to mysql db");
 
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("views", __dirname + "/views");
 
 // app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + "/public"));
 
 // 라우터
 app.get("/", (req, res) => {
@@ -51,6 +52,11 @@ app.post("/contactProc", (req, res) => {
   // let message = `${user_name}, ${user_phone}, ${user_email}, ${user_memo}`;
 
   // res.send(message);
+});
+
+// 관리자용 | 외부노출 x | 문의내용 확인
+app.get("/contactList", (req, res) => {
+  res.render("contactlist");
 });
 
 app.listen(port, () => {
