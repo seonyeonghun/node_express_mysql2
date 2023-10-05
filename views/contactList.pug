@@ -1,0 +1,24 @@
+doctype html
+html(lang="ko")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title node+express website
+  body 
+    h1 contactList | 문의접수 목록
+    
+    include includes/comm_header.pug
+    main 
+      table(border="1", cellpadding="10", cellspacing="0") 
+        tr 
+          th 번호
+          th 이름
+          th 연락처
+          th 이메일
+          th 내용
+          th 등록일
+        tr
+    include includes/comm_footer.pug
+    
+    
