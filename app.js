@@ -56,7 +56,12 @@ app.post("/contactProc", (req, res) => {
 
 // 관리자용 | 외부노출 x | 문의내용 확인
 app.get("/contactList", (req, res) => {
-  res.render("contactlist");
+  let sql = `select * from contact`;
+  conn.query(sql, (error, result, fields) => {
+    if (error) throw error;
+    console.log(result);
+    res.render("contactList",{lists: result})
+  });
 });
 
 app.listen(port, () => {
