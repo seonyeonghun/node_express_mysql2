@@ -41,13 +41,17 @@ app.post("/contactProc", (req, res) => {
   const user_memo = req.body.memo;
   //console.log(user_name);
   let sql = `insert into contact(name,phone,email,memo,regdate) values ('${user_name}','${user_phone}', '${user_email}', '${user_memo}', DATE_FORMAT(now(), '%y/%m/%d'))`;
-  conn.query(sql, (error, result) => {
-    if (error) throw error;
-    console.log("1 rows inserted");
-    res.send(
-      "<script>alert('문의사항이 등록되었습니다'); location.href='/';</script>"
-    );
-  });
+  try {
+    conn.query(sql, (error, result) => {
+      if (error) throw error;
+      console.log("1 rows inserted");
+      res.send(
+        "<script>alert('문의사항이 등록되었습니다'); location.href='/';</script>"
+      );
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
   // conn.end();
   // let message = `${user_name}, ${user_phone}, ${user_email}, ${user_memo}`;
@@ -58,11 +62,15 @@ app.post("/contactProc", (req, res) => {
 // 관리자용 | 외부노출 x | 문의내용 확인
 app.get("/contactList", (req, res) => {
   let sql = `select * from contact order by idx desc`;
-  conn.query(sql, (error, result, fields) => {
-    if (error) throw error;
-    //console.log(result);
-    res.render("contactList", { lists: result });
-  });
+  try {
+    conn.query(sql, (error, result, fields) => {
+      if (error) throw error;
+      //console.log(result);
+      res.render("contactList", { lists: result });
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.listen(port, () => {
