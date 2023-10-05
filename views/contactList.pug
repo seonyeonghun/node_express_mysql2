@@ -20,6 +20,7 @@ html(lang="ko")
           th 이메일
           th 내용
           th 등록일
+          th 처리
         each list in lists 
           tr 
             td= list.idx
@@ -28,4 +29,6 @@ html(lang="ko")
             td= list.email
             td= list.memo
             td= list.regdate
+            td
+              button(onclick=`location.href='/contactDelete?idx=${list.idx}'`) 삭제
     include includes/comm_footer.pug

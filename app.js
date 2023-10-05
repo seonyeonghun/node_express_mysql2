@@ -59,6 +59,17 @@ app.post("/contactProc", (req, res) => {
   // res.send(message);
 });
 
+app.get("/contactDelete", (req, res) => {
+  let idx = req.query.idx;
+  let sql = `delete from contact where idx=${idx}`;
+  conn.query(sql, (error, result, fields) => {
+    if (error) throw error;
+    res.send(
+      "<script>alert('삭제처리 되었습니다.'); location.href='/contactList';</script>"
+    );
+  });
+});
+
 // 관리자용 | 외부노출 x | 문의내용 확인
 app.get("/contactList", (req, res) => {
   let sql = `select * from contact order by idx desc`;
